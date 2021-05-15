@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2><a th:href="@{/discussionForum}">Back to discussion forum</a></h2>
+	<h2><a th:href="@{/postInput/{id}(id=${th.threadId})}">Add your post</a></h2>
+	<h2><strong th:text="${th.title}"></strong></h2>
+	<span th:text="${th.thread}"></span><br>
+	by <span th:text="${th.username}"></span> - <span th:text="${th.threadDate}"></span>, <span th:text="${th.threadTime}"></span>
+	<br><br>
+	<div th:each="p: ${posts}">
+		<strong th:text="${p.username}"></strong><br>
+		<span th:text="${p.postDate}"></span>, <span th:text="${p.postTime}"></span><br>
+		<span th:text="${p.post}"></span>
+		<br><br>
+	</div>
+</body>
+</html>

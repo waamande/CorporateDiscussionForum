@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>New Post</title>
+</head>
+<body>
+	<h2>New Post</h2>
+	<h2><strong th:text="${th.title}"></strong></h2>
+	<span th:text="${th.thread}"></span><br>
+	by <span th:text="${th.username}"></span> - <span th:text="${th.threadDate}"></span>, <span th:text="${th.threadTime}"></span>
+	<br><br>
+	<form th:method="post" th:action="@{/postInput}" th:object="${post}">
+		Post: <input type="text" th:field="*{post}"><br>
+		<input type="hidden" th:field="*{threadId}" th:value="*{threadId}">
+		<input type="submit" value="Add post">
+</form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Discussion Forum</title>
+</head>
+<body>
+	<h1>Discussion Forum</h1>
+	
+	<h2><a th:href="@{/threadInput}">Add your thread</a></h2>
+	
+	<div th:fragment="logout" class="logout"
+		sec:authorize="isAuthenticated()">
+		
+	    <div th:each="th: ${threads}">
+	    	<a th:href="@{/postView/{id}(id=${th.threadId})}"><strong th:text="${th.title}"></strong><br></a>
+	    	by <span th:text="${th.username}"></span> - <span th:text="${th.threadDate}"></span>, <span th:text="${th.threadTime}"></span>
+			<br>
+			<span th:text="${th.thread}"></span>   
+			<br><br> 
+	    </div>
+	    
+		<div>
+			<form action="#" th:action="@{/logout}" method="post">
+				<input type="submit" value="Logout" />
+			</form>
+		</div>
+	</div>
+</body>
+</html>

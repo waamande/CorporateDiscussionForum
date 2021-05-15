@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>New Thread</title>
+</head>
+<body>
+<h2>New Thread</h2>
+<form th:method="post" th:action="@{/threadInput}" th:object="${thread}">
+	Title: <input type="text" th:field="*{title}"><br>
+	Thread: <input type="text" th:field="*{thread}"><br>
+	<input type="submit" value="Add thread">
+</form>
+</body>
+</html>
