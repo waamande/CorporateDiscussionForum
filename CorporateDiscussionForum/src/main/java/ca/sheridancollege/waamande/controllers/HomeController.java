@@ -37,7 +37,14 @@ public class HomeController {
 	
 	@GetMapping("/")
 	public String getIndex() {
-		return "index";
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if(auth.getAuthorities().toString().equals("[ROLE_EMPLOYEE]")) {
+			return "redirect:/discussionForum";
+		}
+		else if(auth.getAuthorities().toString().equals("[ROLE_MANAGER]")) {
+			return "index";
+		}
+		return null;
 	}
 	
 	@GetMapping("/login")
